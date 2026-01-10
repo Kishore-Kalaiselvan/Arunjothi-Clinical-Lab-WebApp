@@ -1,0 +1,63 @@
+/* A4 page setup */
+@page {
+  size: A4;
+  margin: 25mm 20mm 20mm 20mm;
+}
+
+/* Screen */
+.report-page {
+  font-family: Arial, sans-serif;
+  color: black;
+}
+
+/* Patient info */
+.patient-info {
+  margin-top: 35mm; /* space for pre-printed lab header */
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.spacer {
+  height: 15mm;
+}
+
+/* Test section */
+.test-block {
+  margin-bottom: 12mm;
+}
+
+.test-name {
+  font-weight: bold;
+  margin-bottom: 4mm;
+}
+
+.single-line {
+  margin-left: 10mm;
+}
+
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.result-table th,
+.result-table td {
+  border: 1px solid black;
+  padding: 6px;
+  font-size: 13px;
+}
+
+/* Footer */
+.footer {
+  margin-top: 30mm;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Print only */
+@media print {
+  .print-btn {
+    display: none;
+  }
+}
