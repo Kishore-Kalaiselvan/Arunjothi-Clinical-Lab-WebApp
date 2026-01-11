@@ -1,22 +1,24 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Report } from './report.entity';
 
 @Injectable()
 export class ReportsService {
-  private reports: any[] = []; // 👈 FIX
+  constructor(
+    @InjectRepository(Report)
+    private repo: Repository<Report>,
+  ) {}
 
   createReport(data: any) {
-    const report = {
-      id: Date.now(),
+    const report = this.repo.create({
       ...data,
-      createdAt: new Date(),
       locked: true,
-    };
-
-    this.reports.push(report);
-    return report;
+    });
+    return this.repo.save(report);
   }
 
   getAllReports() {
-    return this.reports;
+    return this.repo.find({ order: { createdAt: 'DESC' } });
   }
 }

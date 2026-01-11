@@ -6,7 +6,7 @@ export class RevenueController {
   constructor(private readonly revenueService: RevenueService) {}
 
   @Get('summary')
-  getSummary() {
+  async getSummary() {
     return this.revenueService.getSummary();
   }
 }
